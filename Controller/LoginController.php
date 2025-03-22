@@ -1,5 +1,6 @@
 <?php 
 include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Model/DBConexionModel.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Model/UtilitariosController.php";  // Asegúrate de tener este archivo para el envío de correos
 session_start();  
 
 // Registro de nuevo usuario
@@ -100,5 +101,41 @@ function IniciarSesionModel($correo) {
 
     CerrarBaseDatos($conexion);  
     return $resultado;
+}
+
+// RECUPERAR CONTRASEÑA
+if (isset($_POST["btnRecuperarCuenta"])) {
+    $correo = $_POST["txtCorreo"];
+
+    // Verificar si el correo está registrado
+    $resultado = VerificarCorreoExistente($correo);
+    if ($resultado->num_rows > 0) {
+        // Generar un token único
+        $token = bin2hex(random_bytes(50));
+        
+        // Guardar el token en la base de datos
+        $conexion = AbrirBaseDatos();
+        $consulta = $conexion->prepare("UPDATE usuario SET token = ? WHERE correo = ?");
+        $consulta->bind_param("ss", $token, $correo);
+        $consulta->execute();
+        CerrarBaseDatos($conexion);
+        
+        // Enviar el correo con el enlace para restablecer la contraseña
+        $asunto = "Restablecer tu contraseña";
+        $contenido = "<p>Haz clic en el siguiente enlace para restablecer tu contraseña:</p>";
+        $contenido .= "<a href='http://localhost/ParaisoTico/View/Login/restablecerContra.php?token=" . $token . "'>Restablecer Contraseña</a>";
+        
+        // Llamamos a la función para enviar el correo
+        if (EnviarCorreo($asunto, $contenido, $correo)) {
+            $_SESSION["Message"] = "Te hemos enviado un enlace para restablecer tu contraseña.";
+        } else {
+            $_SESSION["Message"] = "Hubo un error al enviar el correo. Inténtalo nuevamente.";
+        }
+    } else {
+        $_SESSION["Message"] = "El correo no está registrado en nuestros sistemas.";
+    }
+
+    header('Location: ../View/Login/cambiarcontra.php');  // Redirige al formulario de recuperación
+    exit();
 }
 ?>
