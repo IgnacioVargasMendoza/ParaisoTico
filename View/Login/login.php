@@ -45,7 +45,7 @@
                   </div>
                   <div class="form-check mb-3">
                     <label class="form-check-label">
-                      <a href="forgot_password.php" class="text-decoration-none">Cambiar contraseña</a>
+                      <a href="cambiarContra.php" class="text-decoration-none">Cambiar contraseña</a>
                     </label>
                   </div>
                 </div>
