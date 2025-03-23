@@ -1,6 +1,6 @@
 /* Fondo de pantalla con imagen */
 body {
-    background: url('../images/playa.jpg') no-repeat center center fixed; /* Ruta a la imagen local */
+    background: url('/../Img/playa.jpg') no-repeat center center fixed; /* Ruta a la imagen local */
     background-size: cover;
     height: 100vh;
     display: flex;

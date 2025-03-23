@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../Styles/estilo.css">
   </head>
   <body>
     <div class="container">
@@ -22,7 +22,7 @@
 
               <h5 class="card-title"> Iniciar sesión </h5>
 
-              <form action="../../Controller/LoginController.php" method="POST">
+              <form action="" method="POST">
 
                 <div class="form-floating mb-3">
                   <input type="email" class="form-control" id="floatingInput" name="email" 
