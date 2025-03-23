@@ -16,7 +16,7 @@
             <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
             <!-- Core theme CSS (includes Bootstrap)-->
             <link href="../Styles/bootstrap.min.css" rel="stylesheet"/>
-            <link href="../Styles/styles.css" rel="stylesheet" />
+            <link href="../Styles/styles.css" rel="stylesheet" />            
         </head>';
     }
 
@@ -45,10 +45,11 @@
                     </ul>
                 </div>
 
-                <div class="dropdown">
+                <div class="dropdown ml-auto my-n2" >
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                         <span class="avatar avatar-sm avatar-status avatar-status-success mr-3">
-                        <img class="avatar-img" src="../View/assets/img/photo-6.jpg" alt="...">
+                            <img class="rounded-circle" src="../assets/img/photo-6.jpg" 
+                                style="width: 40px; height: 40px; object-fit: cover;" alt="avatar"/>
                         </span>
                         UserName
                     </a>
@@ -66,7 +67,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">Cerrar Sesión</a>
+                            <a class="dropdown-item" href="../Login/login.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>

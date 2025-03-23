@@ -91,6 +91,8 @@
   }
 }
 
+
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -5298,6 +5300,13 @@ textarea.form-control-lg {
 }
 .modal-dialog-scrollable .modal-body {
   overflow-y: auto;
+}
+
+.avatar-sm .avatar-img {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .modal-dialog-centered {
