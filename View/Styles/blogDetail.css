@@ -1,0 +1,87 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f9f9f9;
+    color: #444;
+    line-height: 1.6;
+}
+h2, h4 {
+    color: #333;
+}
+/* Navbar adjustments */
+.navbar {
+    background-color: #447a9e;
+}
+.navbar-brand, .nav-link {
+    color: #fff !important;
+}
+.nav-link:hover {
+    color: #d8e3e7 !important;
+}
+/* Divider style */
+.divider-custom-line {
+    background-color: #447a9e;
+    height: 3px;
+    width: 50px;
+    margin: 0 auto;
+}
+.divider-custom-icon {
+    color: #447a9e;
+    font-size: 2rem;
+    margin: 0 10px;
+}
+/* Main image style */
+.main-tour-img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+/* Extended details area */
+.page-section div {
+    margin-bottom: 1rem;
+}
+/* Card and gallery styles */
+.gallery-card {
+    border: none;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    background-color: #fff;
+}
+.gallery-card:hover {
+    transform: scale(1.02);
+}
+.gallery-img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.gallery-img:hover {
+    transform: scale(1.05);
+}
+/* Modal adjustments */
+#modalImage {
+    max-height: 90vh;
+    max-width: 90vw;
+    width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+}
+/* Carousel spacing */
+.carousel-item .col {
+    padding: 0 5px;
+}
+/* Button style */
+.btn-secondary {
+    background-color: #447a9e;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+.btn-secondary:hover {
+    background-color: #365f7a;
+}
