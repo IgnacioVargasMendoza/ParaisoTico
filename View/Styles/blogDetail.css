@@ -76,12 +76,3 @@ h2, h4 {
 .carousel-item .col {
     padding: 0 5px;
 }
-/* Button style */
-.btn-secondary {
-    background-color: #447a9e;
-    border: none;
-    transition: background-color 0.3s ease;
-}
-.btn-secondary:hover {
-    background-color: #365f7a;
-}
