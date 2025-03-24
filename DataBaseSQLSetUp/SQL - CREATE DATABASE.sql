@@ -1,4 +1,4 @@
-#Creacion base de datos Paraiso Tico
+-- Creacion base de datos Paraiso Tico
 
 CREATE DATABASE  IF NOT EXISTS `db_paraisoTico` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `db_paraisoTico`;

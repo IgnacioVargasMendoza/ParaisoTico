@@ -1,4 +1,4 @@
-# Script Creacion Entidades
+--  Script Creacion Entidades
 CREATE TABLE db_paraisoTico.Rol (
     id_rol INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(10) NOT NULL,
@@ -27,11 +27,21 @@ CREATE TABLE db_paraisoTico.Usuarios_Roles (
 
 CREATE TABLE db_paraisoTico.Blog (
     id_blog INT PRIMARY KEY AUTO_INCREMENT,
-    titulo VARCHAR(100) NOT NULL,
-    contenido VARCHAR(1022),
-    fecha_publicacion DATE NOT NULL,
-    id_usuario INT NOT NULL,
-    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
+    titulo VARCHAR(255) NOT NULL,
+    resumen VARCHAR(1022),
+    contenido TEXT,
+    contacto VARCHAR(1022),
+    actividades TEXT,
+    detallado TEXT,
+    incluye TEXT,
+    imagen LONGBLOB,
+) ENGINE = InnoDB;
+
+CREATE TABLE db_paraisoTico.Imagenes_Blog (
+    id_imagen INT PRIMARY KEY AUTO_INCREMENT,
+    id_blog INT NOT NULL,
+    imagen LONGBLOB,
+    FOREIGN KEY (id_blog) REFERENCES Blog(id_blog)
 ) ENGINE = InnoDB;
 
 CREATE TABLE db_paraisoTico.Categorias (

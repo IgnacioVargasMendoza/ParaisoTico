@@ -4,7 +4,7 @@ body {
     background-color: #f2f2f2;
     color: #444;
 }
-h1, h2, h3, h4, h5 {
+h2, h3, h4, h5 {
     font-family: 'Montserrat', sans-serif;
     color: #333;
 }
@@ -73,7 +73,6 @@ h1, h2, h3, h4, h5 {
 }
 .card-body .btn {
     margin-top: auto;
-    background-color: #447a9e;
     border: none;
     transition: background-color 0.3s ease;
 }
