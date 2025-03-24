@@ -32,7 +32,7 @@
         echo ' 
         <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color:rgb(68, 122, 158);">
             <div class="container">
-                <a class="navbar-brand" href="#page-top">Paraíso Tico</a>
+                <a class="navbar-brand" href="../Login/home.php">Paraíso Tico</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -61,7 +61,7 @@
                             <a class="dropdown-item" href="#">Cambiar Contraseña</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">Administrar Actividades</a>
+                            <a class="dropdown-item" href="../Actividades/agregar.php">Administrar Actividades</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
