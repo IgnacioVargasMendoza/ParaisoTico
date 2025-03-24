@@ -1,5 +1,4 @@
 <?php
-// filepath: c:\Users\carlo\OneDrive\Escritorio\Proyecto Maria\ParaisoTico\Controller\BlogController.php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Model/DBConexionModel.php";
 
 /**

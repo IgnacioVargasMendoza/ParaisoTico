@@ -1,5 +1,4 @@
 <?php 
-// filepath: c:\Users\carlo\OneDrive\Escritorio\Proyecto Maria\ParaisoTico\View\Login\blog.php
 include_once '../../Controller/BlogController.php';
 include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/View/layoutInterno.php";
 $blogs = obtenerBlogs();
