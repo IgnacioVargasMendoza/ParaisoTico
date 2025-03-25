@@ -1,0 +1,191 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Contenedor principal del formulario */
+#reservacion {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #007bff;
+}
+
+/* Título de la sección */
+.page-section-heading {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+/* Línea decorativa con icono */
+.divider-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.divider-custom-line {
+    width: 50px;
+    height: 3px;
+    background-color: #007bff;
+}
+
+.divider-custom-icon i {
+    font-size: 20px;
+    color: #007bff;
+}
+
+/* Estilos de los select y inputs */
+.form-floating select,
+.form-floating input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.form-floating select:focus,
+.form-floating input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Botón de reservar */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+
+/* Estilos para la vista de detalle */
+#detalle-reserva .card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#detalle-reserva .card-header {
+    font-size: 1.25rem;
+    padding: 1rem 1.5rem;
+}
+
+#detalle-reserva .card-body {
+    padding: 2rem;
+}
+
+#detalle-reserva .text-muted {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+#detalle-reserva .badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+}
+
+#detalle-reserva hr {
+    margin: 1.5rem 0;
+    opacity: 0.2;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #detalle-reserva,
+    #detalle-reserva * {
+        visibility: visible;
+    }
+
+    #detalle-reserva {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    .card-footer {
+        display: none;
+    }
+}
+
+
+/* Estilos para el listado de reservaciones */
+#listado-reservaciones .table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#listado-reservaciones .table thead th {
+    border-bottom: 2px solid #dee2e6;
+}
+
+#listado-reservaciones .table-hover tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+#listado-reservaciones .badge {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.65rem;
+}
+
+#listado-reservaciones .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Estilos para la tabla de reservaciones */
+#mis-reservaciones .table {
+    font-size: 0.95rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+#mis-reservaciones .table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+#mis-reservaciones .table td,
+#mis-reservaciones .table th {
+    vertical-align: middle;
+    padding: 0.75rem 1rem;
+}
+
+#mis-reservaciones .badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+}
+
+#mis-reservaciones .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.85rem;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}

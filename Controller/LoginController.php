@@ -1,141 +1,139 @@
 <?php 
-include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Model/DBConexionModel.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Model/UtilitariosController.php";  // Asegúrate de tener este archivo para el envío de correos
-session_start();  
+class LoginController
+{
+public function login()
+    {
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $usernameOrEmail = $_POST['email']; 
+            $password = $_POST['password'];
+            echo "Usuario/Email proporcionado: " . $usernameOrEmail . "<br>"; // Depuración
+            echo "Contraseña proporcionada: " . $password . "<br>"; // Depuración
 
-// Registro de nuevo usuario
-if (isset($_POST["btnCrearCuenta"])) {
-    $correo = $_POST["email"];
-    $nombre = $_POST["nombre"];
-    $apellido = $_POST["apellido"];
-    $contrasenna = $_POST["password"];
-    $confirm_contrasenna = $_POST["confirm_password"];
+            // Validar las credenciales
+            $usuario = Usuario::login($usernameOrEmail, $password);
+            print_r($usuario, true);
+            echo "Usuario: " . $usernameOrEmail;    
+            echo "Contraseña: " . $password;    
+            if ($usuario) {
+                session_set_cookie_params(3600);
+                // Iniciar sesión
+                session_start();
+                $_SESSION['usuario'] = [
+                    'id_usuario' => $usuario->id_usuario,
+                    'username' => $usuario->username,
+                    'nombre' => $usuario->nombre,
+                    'correo' => $usuario->correo,
+                    'ruta_imagen' => $usuario->ruta_imagen,
+                ];
 
-    // Verificar si las contraseñas coinciden
-    if ($contrasenna != $confirm_contrasenna) {
-        $_SESSION["Message"] = "Las contraseñas no coinciden.";
-        header('Location: ../View/Login/crearcuenta.php');
-        exit();
+                // Redirigir al home
+                header('Location: index.php?route=home&action=home');
+                exit();
+            } else {
+                // Mostrar mensaje de error
+                session_start();
+                $_SESSION['Message'] = "Credenciales incorrectas. Inténtalo de nuevo.";
+                
+                header('Location: index.php?route=login');
+                exit();
+            }
+        }
     }
 
-    // Verificar si el correo ya está registrado
-    $resultado = VerificarCorreoExistente($correo);
-    if ($resultado->num_rows > 0) {
-        $_SESSION["Message"] = "El correo ya está registrado.";
-        header('Location: ../View/Login/crearcuenta.php');
-        exit();
-    }
+    public function register()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Obtener los datos del formulario
+        $username = $_POST['username'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $nombre = $_POST['nombre'] ?? '';
+        $primer_apellido = $_POST['apellido'] ?? '';
+        $password = $_POST['password'] ?? '';
+        $confirm_password = $_POST['confirm_password'] ?? '';
+        $imagen = $_FILES['imagen'] ?? null;
 
-    // Registrar al nuevo usuario
-    $resultado = RegistrarUsuario($correo, $nombre, $apellido, $contrasenna);
-    if ($resultado) {
-        $_SESSION["Message"] = "Cuenta creada con éxito. Inicia sesión.";
-        header('Location: ../View/Login/login.php');
-        exit();
-    } else {
-        $_SESSION["Message"] = "Error al crear cuenta, intenta nuevamente.";
-        header('Location: ../View/Login/crearcuenta.php');
-        exit();
-    }
-}
+        // echo "Datos del formulario:<br>";
+        // echo "Username: $username<br>";
+        // echo "Email: $email<br>";
+        // echo "Nombre: $nombre<br>";
+        // echo "Apellido: $primer_apellido<br>";
+        // echo "Password: $password<br>";
+        // echo "Confirm Password: $confirm_password<br>";
+        // echo "Imagen: " . print_r($imagen, true) . "<br>";
 
-// Función para verificar si el correo ya existe en la base de datos
-function VerificarCorreoExistente($correo) {
-    $conexion = AbrirBaseDatos();
-    $consulta = $conexion->prepare("SELECT * FROM usuario WHERE correo = ?");
-    $consulta->bind_param("s", $correo);
-    $consulta->execute();
-    $resultado = $consulta->get_result();
-    CerrarBaseDatos($conexion);
-    return $resultado;
-}
-
-function RegistrarUsuario($correo, $nombre, $apellido, $contrasenna) {
-    $username = explode('@', $correo)[0]; 
-
-    $conexion = AbrirBaseDatos();
-    $consulta = $conexion->prepare("INSERT INTO usuario (username, correo, nombre, primer_apellido, password, activo) VALUES (?, ?, ?, ?, ?, 1)");
-    $consulta->bind_param("sssss", $username, $correo, $nombre, $apellido, $contrasenna);
-    $resultado = $consulta->execute();
-    CerrarBaseDatos($conexion);
-    return $resultado;
-}
-
-// INICIO SESION EXISTENTE
-if (isset($_POST["btnIniciarSesion"])) {
-    $correo = $_POST["email"];  
-    $contrasenna = $_POST["password"];  
-
-    $resultado = IniciarSesionModel($correo);
-
-    if ($resultado != null && $resultado->num_rows > 0) {
-        $datos = mysqli_fetch_assoc($resultado);
-
-        // Comparar contraseñas en texto plano
-        if ($contrasenna == $datos["password"]) {
-            $_SESSION["IdUsuario"] = $datos["id_usuario"];
-            $_SESSION["CorreoUsuario"] = $datos["correo"];
-            $_SESSION["NombreUsuario"] = $datos["nombre"] . " " . $datos["primer_apellido"]; 
-
-            header('Location: ../View/Login/home.php');
-            exit();
-        } else {
-            $_SESSION["Message"] = "Correo o contraseña incorrectos.";
-            header('Location: ../View/Login/login.php');
+        // Validar que las contraseñas coincidan
+        if ($password !== $confirm_password) {
+            $_SESSION['Message'] = "Las contraseñas no coinciden.";
+            header('Location: index.php?route=login&action=register');
             exit();
         }
+
+        // Procesar la imagen
+        if ($imagen && $imagen['error'] === UPLOAD_ERR_OK) {
+            $rutaImagen = $this->guardarImagen($imagen);
+            if (!$rutaImagen) {
+                $_SESSION['Message'] = "Error al subir la imagen.";
+                header('Location: index.php?route=login&action=register');
+                exit();
+            }
+        } else {
+            $_SESSION['Message'] = "Debes subir una imagen de perfil.";
+            header('Location: index.php?route=login&action=register');
+            exit();
+        }
+
+        // Crear un nuevo usuario
+        $usuario = new Usuario();
+        $usuario->username = $username;
+        $usuario->correo = $email;
+        $usuario->nombre = $nombre;
+        $usuario->primer_apellido = $primer_apellido;
+        $usuario->password = password_hash($password, PASSWORD_BCRYPT); 
+        $usuario->ruta_imagen = $rutaImagen; 
+        $usuario->activo = true; 
+
+        // Guardar el usuario en la base de datos
+        if ($usuario->save()) {
+            $_SESSION['Message'] = "Usuario registrado correctamente. Inicia sesión.";
+            header('Location: index.php?route=login');
+            exit();
+        } else {
+            $_SESSION['Message'] = "Error al registrar el usuario.";
+            header('Location: index.php?route=login&action=register');
+            exit();
+        }
+    }
+}
+
+private function guardarImagen($imagen)
+{
+    $directorio = 'View/Img/usuarios/'; // Directorio donde se guardarán las imágenes
+    if (!is_dir($directorio)) {
+        mkdir($directorio, 0755, true); // Crear el directorio si no existe
+    }
+
+    $nombreArchivo = uniqid() . '_' . basename($imagen['name']); // Nombre único para evitar colisiones
+    $rutaCompleta = $directorio . $nombreArchivo;
+
+    if (move_uploaded_file($imagen['tmp_name'], $rutaCompleta)) {
+        return $rutaCompleta; // Retornar la ruta relativa de la imagen
     } else {
-        $_SESSION["Message"] = "Correo o contraseña incorrectos.";
-        header('Location: ../View/Login/login.php');
+        return false; // Error al mover el archivo
+    }
+}
+
+    public function logout()
+    {
+        // Cerrar sesión
+        session_start();
+        session_unset();
+        session_destroy();
+
+        // Redirigir al login
+        header('Location: index.php?route=login');
         exit();
     }
-}
-
-function IniciarSesionModel($correo) {
-    $conexion = AbrirBaseDatos();  
-
-    $consulta = $conexion->prepare("SELECT id_usuario, password, nombre, primer_apellido, correo FROM usuario WHERE correo = ?");
-    $consulta->bind_param("s", $correo);
-    $consulta->execute();
-    $resultado = $consulta->get_result();
-
-    CerrarBaseDatos($conexion);  
-    return $resultado;
-}
-
-// RECUPERAR CONTRASEÑA
-if (isset($_POST["btnRecuperarCuenta"])) {
-    $correo = $_POST["txtCorreo"];
-
-    // Verificar si el correo está registrado
-    $resultado = VerificarCorreoExistente($correo);
-    if ($resultado->num_rows > 0) {
-        // Generar un token único
-        $token = bin2hex(random_bytes(50));
-        
-        // Guardar el token en la base de datos
-        $conexion = AbrirBaseDatos();
-        $consulta = $conexion->prepare("UPDATE usuario SET token = ? WHERE correo = ?");
-        $consulta->bind_param("ss", $token, $correo);
-        $consulta->execute();
-        CerrarBaseDatos($conexion);
-        
-        // Enviar el correo con el enlace para restablecer la contraseña
-        $asunto = "Restablecer tu contraseña";
-        $contenido = "<p>Haz clic en el siguiente enlace para restablecer tu contraseña:</p>";
-        $contenido .= "<a href='http://localhost/ParaisoTico/View/Login/restablecerContra.php?token=" . $token . "'>Restablecer Contraseña</a>";
-        
-        // Llamamos a la función para enviar el correo
-        if (EnviarCorreo($asunto, $contenido, $correo)) {
-            $_SESSION["Message"] = "Te hemos enviado un enlace para restablecer tu contraseña.";
-        } else {
-            $_SESSION["Message"] = "Hubo un error al enviar el correo. Inténtalo nuevamente.";
-        }
-    } else {
-        $_SESSION["Message"] = "El correo no está registrado en nuestros sistemas.";
-    }
-
-    header('Location: ../View/Login/cambiarcontra.php');  // Redirige al formulario de recuperación
-    exit();
 }
 ?>
+
