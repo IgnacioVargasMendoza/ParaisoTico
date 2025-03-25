@@ -25,7 +25,7 @@ class ControllerUsuario
     public function edit($id)
     {
         $usuario = Usuario::find($id);
-        include 'app/View/Usuario/edit.php';
+        include 'View/Usuario/edit.php';
     }
 
     public function show($id)
