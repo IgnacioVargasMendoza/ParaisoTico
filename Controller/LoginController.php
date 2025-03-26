@@ -1,6 +1,6 @@
 <?php 
 include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Model/DBConexionModel.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Model/UtilitariosController.php";  // Asegúrate de tener este archivo para el envío de correos
+include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Model/UtilitariosController.php"; 
 session_start();  
 
 // Registro de nuevo usuario

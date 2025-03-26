@@ -1,5 +1,12 @@
 <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/View/layoutInterno.php";
+    include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Model/DireccionesModel.php";
+    include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Controller/ActividadesController.php";
+    include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Model/CategoriasModel.php";
+
+    $listaProvincias = ConsultarProvinciasModel(); 
+    $listaCantones   = ConsultarCantonesModel(); 
+    $listaCategorias = ConsultarCategoriasModel(); 
 ?>
 
 <!DOCTYPE html>
@@ -40,54 +47,56 @@
                                                 <div class="form-group col-md-4">
                                                     <label for="txtCategoria">Categoria</label>
                                                     <select class="form-control" id="txtCategoria" name="txtCategoria" required>
-                                                        <option>Choose...</option>
-                                                        <?php
-                                                            /*
-                                                            $datos = ConsultarPuestos();
-
-                                                            echo "<option value=''>Seleccione</option>";
-                                                            while($row = mysqli_fetch_array($datos))
-                                                            {
-                                                                echo "<option value=" . $row["Id"] . ">" . $row["Nombre"] . "</option>";
-                                                            }*/
-                                                        ?>
+                                                        <option>Seleccione...</option>
+                                                            <?php
+                                                                if($listaCategorias != null)
+                                                                {
+                                                                    while($row = mysqli_fetch_array($listaCategorias))
+                                                                    {
+                                                                        echo "<option value='" . $row["id_categorias"] . "'>" 
+                                                                            . $row["nombre"] . "</option>";
+                                                                    }
+                                                                }
+                                                            ?>
                                                     </select>
                                                 </div>
                                             </div>
-                                                <div class="form-row my-2">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="txtProvincia">Provincia</label>
-                                                        <select class="form-control" id="txtProvincia" name="txtProvincia" required>
-                                                            <option>Choose...</option>
+                                            <div class="form-row my-2">
+                                                <div class="form-group col-md-6">
+                                                    <label for="txtProvincia">Provincia</label>
+                                                    <select class="form-control" id="txtProvincia" 
+                                                            name="txtProvincia" required>
+                                                        <option value="">Seleccione...</option>
                                                             <?php
-                                                                /*
-                                                                $datos = ConsultarPuestos();
-
-                                                                echo "<option value=''>Seleccione</option>";
-                                                                while($row = mysqli_fetch_array($datos))
+                                                                if($listaProvincias != null)
                                                                 {
-                                                                    echo "<option value=" . $row["Id"] . ">" . $row["Nombre"] . "</option>";
-                                                                }*/
+                                                                    while($row = mysqli_fetch_array($listaProvincias))
+                                                                    {
+                                                                        echo "<option value='" . $row["id_provincias"] . "'>" 
+                                                                            . $row["nombre"] . "</option>";
+                                                                    }
+                                                                }
                                                             ?>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="txtCanton">Canton</label>
-                                                        <select class="form-control" id="txtCanton" name="txtCanton" required>
-                                                            <option>Choose...</option>
-                                                            <?php
-                                                                /*
-                                                                $datos = ConsultarPuestos();
-
-                                                                echo "<option value=''>Seleccione</option>";
-                                                                while($row = mysqli_fetch_array($datos))
-                                                                {
-                                                                    echo "<option value=" . $row["Id"] . ">" . $row["Nombre"] . "</option>";
-                                                                }*/
-                                                            ?>
-                                                        </select>
-                                                    </div>
+                                                    </select>
                                                 </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="txtCanton">Cantón</label>
+                                                    <select class="form-control" id="txtCanton" 
+                                                            name="txtCanton" required>
+                                                        <option value="">Seleccione...</option>
+                                                            <?php
+                                                                if($listaCantones != null)
+                                                                {
+                                                                    while($row = mysqli_fetch_array($listaCantones))
+                                                                    {
+                                                                        echo "<option value='" . $row["id_canton"] . "'>" 
+                                                                            . $row["nombre"] . "</option>";
+                                                                    }
+                                                                }
+                                                            ?>
+                                                    </select>
+                                                </div>
+                                            </div>
                                             <div class="form-group my-3">
                                                 <label for="txtDescripcion">Descripcion</label>
                                                 <textarea class="form-control" id="txtDescripcion" name="txtDescripcion" rows="3"></textarea>
