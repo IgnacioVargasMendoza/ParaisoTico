@@ -41,41 +41,4 @@
         }
     }
 
-/*
-    if(isset($_POST["btnActualizarActividad"]))
-    {
-        $id                 = $_POST["txtId"];
-        $nombre             = $_POST["txtNombre"];
-        $descripcion        = $_POST["txtDescripcion"];
-        $precio             = $_POST["txtPrecio"];
-        $punto_encuentro    = $_POST["txtPuntoEncuentro"];
-        $descripcion_incluye= $_POST["txtIncluye"];
-        $id_categorias      = $_POST["txtCategoria"];
-        $id_canton          = $_POST["txtCanton"];
-        $foto   = null;
-        $activo = 1;
-
-
-        $resultado = ActualizarActividadModel(
-            $id,
-            $nombre,
-            $descripcion,
-            $precio,
-            $punto_encuentro,
-            $descripcion_incluye,
-            $id_categorias,
-            $id_canton,
-            $foto,
-            $activo
-        );
-
-        if($resultado == true)
-        {
-            header('Location: ../../View/Actividades/consultarActividades.php');
-        }
-        else
-        {
-            $_POST["Message"] = "La actividad no fue actualizada correctamente";
-        }
-    }  */  
 ?>
