@@ -1,7 +1,31 @@
 <?php
-// Definir el contenido dinámico
-ob_start(); // Iniciar el buffer de salida
+    include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/View/layoutInterno.php";
 ?>
+
+<!DOCTYPE html>
+<html lang="es">
+
+    <?php printCSS(); ?>
+
+    <body id="page-top">
+
+        <?php barraNavegacion() ?>
+
+        <header class="masthead text-white text-center" style="background-image: url('../Img/sol.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+            <div class="container d-flex align-items-center flex-column">
+                <h1 class="masthead-heading text-uppercase mb-0">Paraíso Tico</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">Donde la tranquilidad es Pura Vida</p>
+            </div>
+        </header>
+
+
         <!-- Portfolio Section-->
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
@@ -21,7 +45,7 @@ ob_start(); // Iniciar el buffer de salida
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="View/Img/barco.jpeg" alt="..." />
+                            <img class="img-fluid" src="../Img/barco.jpeg" alt="..." />
                         </div>
                     </div>
                     <!-- Portfolio Item 2-->
@@ -30,7 +54,7 @@ ob_start(); // Iniciar el buffer de salida
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="View/Img/arena.jpeg" alt="..." />
+                            <img class="img-fluid" src="../Img/arena.jpeg" alt="..." />
                         </div>
                     </div>
                     <!-- Portfolio Item 3-->
@@ -39,7 +63,7 @@ ob_start(); // Iniciar el buffer de salida
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="View/Img/volcan.jpg" alt="..." />
+                            <img class="img-fluid" src="../Img/volcan.jpg" alt="..." />
                         </div>
                     </div>
                     <!-- Portfolio Item 4-->
@@ -48,7 +72,7 @@ ob_start(); // Iniciar el buffer de salida
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="View/Img/playas.jpeg" alt="..." />
+                            <img class="img-fluid" src="../Img/playas.jpeg" alt="..." />
                         </div>
                     </div>
                     <!-- Portfolio Item 5-->
@@ -57,7 +81,7 @@ ob_start(); // Iniciar el buffer de salida
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="View/Img/grecia.jpeg" alt="..." />
+                            <img class="img-fluid" src="../Img/grecia.jpeg" alt="..." />
                         </div>
                     </div>
                     <!-- Portfolio Item 6-->
@@ -66,18 +90,15 @@ ob_start(); // Iniciar el buffer de salida
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="View/Img/colibri.webp" alt="..." />
+                            <img class="img-fluid" src="../Img/colibri.webp" alt="..." />
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-       
-                    </a>
-                </div>
-            </div>
-        </section>
-<?php
-$content = ob_get_clean(); // Obtener el contenido del buffer y limpiarlo
-include 'View/Layout/layout.php';
-?>
+
+        <?php printScript(); ?>
+
+    </body>
+
+</html>
