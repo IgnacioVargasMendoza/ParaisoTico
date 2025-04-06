@@ -96,7 +96,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <input type="submit" id="btnSubmitActividad" name="btnGuardarActividad" style="display:none;">
+                                        <input type="submit" id="btnGuardar" name="btnGuardar" style="display:none;">
                                     </form>
                                 </div>
                             </div>
@@ -117,15 +117,11 @@
                 </div>
                 <div class="d-flex justify-content-between mt-4" style="margin-bottom: 1%;">
                     <a href="../Categorias/listado.php" class="btn btn-secondary">Atras</a>
-                    <button type="button" class="btn btn-primary" id="btnGuardarActividad">Guardar</button>
+                    <button type="button" class="btn btn-primary" id="btnGuardar" name="btnGuardar">Guardar</button>
                 </div>
             </div>
         </div>
         <?php PrintScript(); ?>
-        <script>
-            document.getElementById('btnGuardarActividad').addEventListener('click', function(){
-                document.getElementById('frmActividad').submit();
-            });
-        </script>
+        <script>src="../Scripts/formularioActtivadad.js"</script>
     </body>
 </html>

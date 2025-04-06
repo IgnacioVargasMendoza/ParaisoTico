@@ -46,6 +46,15 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="col-12 col-md-6 mb-4">
+                                            <div class="card bg-light">
+                                                
+                                                  <button class="form-control" type="button">HOLA</button>
+                                                
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarCategoria">
                                     <i class="fas fa-plus"></i> 
