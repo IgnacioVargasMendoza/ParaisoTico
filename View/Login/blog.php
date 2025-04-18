@@ -38,7 +38,7 @@
                           <a class="nav-link py-3 px-0 px-lg-3 rounded" href="blog.php">Blog</a>
                         </li>
                         <li class="nav-item mx-0 mx-lg-1">
-                          <a class="nav-link py-3 px-0 px-lg-3 rounded" href="../View/Login/home.php#contact">Contacto</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="contact.php">Contacto</a>
                         </li>
                     </ul>
                 </div>
