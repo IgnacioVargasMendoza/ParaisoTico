@@ -6,7 +6,6 @@
 
     $listaProvincias = ConsultarProvinciasModel(); 
     $listaCantones   = ConsultarCantonesModel(); 
-    $listaCategorias = ConsultarCategoriasModel(); 
 ?>
 
 <!DOCTYPE html>

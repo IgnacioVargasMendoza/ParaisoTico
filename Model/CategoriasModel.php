@@ -7,7 +7,7 @@
         {
             $context = AbrirBaseDatos();
 
-            $sentencia = "CALL SP_CrearOferta('$nombre')";
+            $sentencia = "CALL SP_InsertarCategoria('$nombre')";
             $resultado = $context -> query($sentencia);
 
             CerrarBaseDatos($context);
@@ -19,13 +19,13 @@
         }        
     }  
     
-    function ConsultarCategoriasModel()
+    function consultarCategoriasModel($activo)
     {
         try 
         {
             $context = AbrirBaseDatos();
 
-            $sentencia = "CALL SP_ConsultarCategorias()";
+            $sentencia = "CALL SP_ConsultarCategorias('$activo')";
             $resultado = $context->query($sentencia);
 
             CerrarBaseDatos($context);
