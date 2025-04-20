@@ -1,11 +1,10 @@
 <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/View/layoutInterno.php";
-    session_start();
-    if (!isset($_SESSION["IdUsuario"])) {
-        header("Location: login.php");
-        exit();
+    if(session_status() == PHP_SESSION_NONE){
+        session_start();
     }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
