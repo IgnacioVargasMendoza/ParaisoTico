@@ -9,7 +9,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <?php printCSS(); ?>
-<link rel="stylesheet" href="../Styles/perfil.css">
 
 <body id="page-top">
 
