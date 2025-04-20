@@ -30,7 +30,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card text-center h-100 shadow">
-                            <img src="../Img/actividad1.jpg" class="card-img-top" alt="Actividad 1">
+                            <img src="../Img/playa.jpg" class="card-img-top" alt="Actividad 1">
                             <div class="card-body">
                                 <h5 class="card-title">Actividad 1</h5>
                                 <p class="card-text"> actividad 1.</p>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card text-center h-100 shadow">
-                            <img src="../Img/actividad2.jpg" class="card-img-top" alt="Actividad 2">
+                            <img src="../Img/playa.jpg" class="card-img-top" alt="Actividad 2">
                             <div class="card-body">
                                 <h5 class="card-title">Actividad 2</h5>
                                 <p class="card-text">actividad 2.</p>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card text-center h-100 shadow">
-                            <img src="../Img/actividad3.jpg" class="card-img-top" alt="Actividad 3">
+                            <img src="../Img/playa.jpg" class="card-img-top" alt="Actividad 3">
                             <div class="card-body">
                                 <h5 class="card-title">Actividad 3</h5>
                                 <p class="card-text"> actividad 3.</p>
