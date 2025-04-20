@@ -33,7 +33,7 @@
                             <img src="../Img/playa.jpg" class="card-img-top" alt="Actividad 1">
                             <div class="card-body">
                                 <h5 class="card-title">Actividad 1</h5>
-                                <p class="card-text"> actividad 1.</p>
+                                <a href="detalle.php" class="btn btn-primary">Ver Detalles</a>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                             <img src="../Img/playa.jpg" class="card-img-top" alt="Actividad 2">
                             <div class="card-body">
                                 <h5 class="card-title">Actividad 2</h5>
-                                <p class="card-text">actividad 2.</p>
+                                <a href="detalle.php" class="btn btn-primary">Ver Detalles</a>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                             <img src="../Img/playa.jpg" class="card-img-top" alt="Actividad 3">
                             <div class="card-body">
                                 <h5 class="card-title">Actividad 3</h5>
-                                <p class="card-text"> actividad 3.</p>
+                                <a href="detalle.php" class="btn btn-primary">Ver Detalles</a>
                             </div>
                         </div>
                     </div>
