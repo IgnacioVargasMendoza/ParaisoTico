@@ -1,5 +1,6 @@
 <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/View/layoutInterno.php";
+    
     if(session_status() == PHP_SESSION_NONE){
         session_start();
     }

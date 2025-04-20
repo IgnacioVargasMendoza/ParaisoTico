@@ -1,40 +1,16 @@
-<?php include '../../Controller/BlogDetailController.php'; ?>
+<?php 
+include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/View/layoutInterno.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Controller/BlogDetailController.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title><?php echo $tour['title']; ?> - Paraíso Tico</title>
-       
-        <!-- Font Awesome icons -->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-        <!-- Core theme CSS and Bootstrap -->
-        <link href="../Styles/styles.css" rel="stylesheet" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../Styles/blogDetail.css" rel="stylesheet" />
-    </head>
+    <?php printCSS(); ?>
+    <link href="../Styles/blogDetail.css" rel="stylesheet" />
+
     <body>
-        <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="home.php">Paraíso Tico</a>
-                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" 
-                        data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" 
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    Menu <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../View/Login/home.php#portfolio">Destinos</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="blog.php">Blog</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../View/Login/home.php#contact">Contacto</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+
+        <?php barraNavegacion() ?>
     
         <section class="page-section" id="tourDetail" style="margin-top:100px;">
             <div class="container">
@@ -105,7 +81,7 @@
                 </div>
             </div>
         </div>
-    
+        <?php printScript(); ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="../Scripts/modal.js"></script>
     </body>
