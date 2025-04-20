@@ -1,16 +1,18 @@
 <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/View/layoutInterno.php";
-    session_start();
+    if(session_status() == PHP_SESSION_NONE){
+        session_start();
+    }
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
-<?php printCSS(); ?>
-<link rel="stylesheet" href="../Styles/contacto.css">
 
-<body id="page-top">
+    <?php printCSS(); ?>
 
-    <?php barraNavegacion(); ?>
+    <body id="page-top">
+
+        <?php barraNavegacion() ?>
 
     <header class="masthead text-white text-center" style="background-image: url('../Img/contacto.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <div class="container d-flex align-items-center flex-column">
@@ -71,6 +73,8 @@
             </div>
         </div>
     </section>
+
+    <?php printScript(); ?>
 
 </body>
 </html>
