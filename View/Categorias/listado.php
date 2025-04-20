@@ -27,7 +27,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/View/layoutInterno.php";
                                 }
                                 ?>
 
-                                <!--Contener para mostrar la lista de categorias-->
+                                <!--Contenedor para mostrar la lista de categorias-->
                                 <div class="container">
                                     <div class="row">
                                         <?php
