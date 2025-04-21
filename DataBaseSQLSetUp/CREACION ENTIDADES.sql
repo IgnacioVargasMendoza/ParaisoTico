@@ -15,6 +15,7 @@ CREATE TABLE db_paraisoTico.Usuario (
     telefono VARCHAR(15),
     ruta_imagen VARCHAR(1022),
     activo BOOLEAN NOT NULL
+    id_rol INT;
 ) ENGINE = InnoDB;
 
 CREATE TABLE db_paraisoTico.Usuarios_Roles (
