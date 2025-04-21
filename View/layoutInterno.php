@@ -30,6 +30,12 @@
     }
 
     function barraNavegacion(){
+        if(session_status() == PHP_SESSION_NONE){
+            session_start();
+        }
+    
+        $nombreUsuario = isset($_SESSION["NombreUsuario"]) ? $_SESSION["NombreUsuario"] : 'Usuario';
+    
         echo ' 
         <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color:rgb(68, 122, 158);">
             <div class="container">
@@ -45,14 +51,14 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../Login/contact.php">Contacto</a></li>
                     </ul>
                 </div>
-
-                <div class="dropdown ml-auto my-n2" >
+    
+                <div class="dropdown ml-auto my-n2">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                         <span class="avatar avatar-sm avatar-status avatar-status-success mr-3">
                             <img class="rounded-circle" src="../assets/img/photo-6.jpg" 
                                 style="width: 40px; height: 40px; object-fit: cover;" alt="avatar"/>
                         </span>
-                        UserName
+                        ' . htmlspecialchars($nombreUsuario) . '
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -75,5 +81,4 @@
             </div>
         </nav>';
     }
-
-?>
+    
