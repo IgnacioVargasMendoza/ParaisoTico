@@ -55,7 +55,7 @@
                 <div class="dropdown ml-auto my-n2">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                         <span class="avatar avatar-sm avatar-status avatar-status-success mr-3">
-                            <img class="rounded-circle" src="../assets/img/photo-6.jpg" 
+                            <img class="rounded-circle" src="../assets/img/logo-icon.png" 
                                 style="width: 40px; height: 40px; object-fit: cover;" alt="avatar"/>
                         </span>
                         ' . htmlspecialchars($nombreUsuario) . '
