@@ -1,6 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS `db_paraisotico` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `db_paraisotico`;
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: db_paraisotico
 -- ------------------------------------------------------
@@ -104,7 +104,7 @@ CREATE TABLE `canton` (
 
 LOCK TABLES `canton` WRITE;
 /*!40000 ALTER TABLE `canton` DISABLE KEYS */;
-INSERT INTO `canton` VALUES (1,1,'San José',1),(2,1,'Escazú',1),(3,1,'Desamparados',1),(4,1,'Aserrí',1),(5,1,'Puriscal',1),(6,1,'Mora',1),(7,1,'Tarrazú',1),(8,1,'Tarrazú',1),(9,1,'Goicoechea',1),(10,1,'Santa Ana',1),(11,2,'Alajuela',1),(12,2,'San Ramón',1),(13,2,'Grecia',1),(14,2,'Atenas',1),(15,2,'Naranjo',1),(16,2,'Palmares',1),(17,2,'Poás',1),(18,2,'Orotina',1),(19,3,'Alvarado',1),(20,3,'Cartago',1),(21,3,'El Guarco',1),(22,3,'Jiménez',1),(23,3,'La Unión',1),(24,3,'Paraíso',1),(25,3,'Turrialba',1),(26,4,'Barva',1),(27,4,'Flores',1),(28,4,'Heredia',1),(29,4,'San Isidro',1),(30,4,'San Pablo',1),(31,4,'San Rafael',1),(32,4,'Santa Bárbara',1),(33,4,'Sarapiquí',1),(34,4,'Santo Domingo.',1),(35,5,'Abangares',1),(36,5,'Bagaces',1),(37,5,'Cañas',1),(38,5,'Carrillo',1),(39,5,'La Cruz',1),(40,5,'Liberia',1),(41,5,'Nandayure',1),(42,5,'Santa Cruz',1),(43,5,'Tilarán',1),(44,6,'Puntarenas',1),(45,6,'Esparza',1),(46,6,'Buenos Aires',1),(47,6,'Montes de Oro',1),(48,6,'Osa',1),(49,6,'Quepos',1),(50,6,'Golfito',1),(51,6,'Coto Brus',1),(52,6,'Parrita',1),(53,6,'Corredores',1),(54,6,'Garabito',1),(55,7,'Limon',1),(56,7,'Pococí',1),(57,7,'Siquirres',1),(58,7,'Talamanca',1),(59,7,'Guácimo',1),(60,7,'Matina',1);
+INSERT INTO `canton` VALUES (11,2,'Alajuela',1),(12,2,'San Ramón',1),(13,2,'Grecia',1),(14,2,'Atenas',1),(15,2,'Naranjo',1),(16,2,'Palmares',1),(17,2,'Poás',1),(18,2,'Orotina',1),(19,3,'Alvarado',1),(20,3,'Cartago',1),(21,3,'El Guarco',1),(22,3,'Jiménez',1),(23,3,'La Unión',1),(24,3,'Paraíso',1),(25,3,'Turrialba',1),(26,4,'Barva',1),(27,4,'Flores',1),(28,4,'Heredia',1),(29,4,'San Isidro',1),(30,4,'San Pablo',1),(31,4,'San Rafael',1),(32,4,'Santa Bárbara',1),(33,4,'Sarapiquí',1),(34,4,'Santo Domingo.',1),(35,5,'Abangares',1),(36,5,'Bagaces',1),(37,5,'Cañas',1),(38,5,'Carrillo',1),(39,5,'La Cruz',1),(40,5,'Liberia',1),(41,5,'Nandayure',1),(42,5,'Santa Cruz',1),(43,5,'Tilarán',1),(44,6,'Puntarenas',1),(45,6,'Esparza',1),(46,6,'Buenos Aires',1),(47,6,'Montes de Oro',1),(48,6,'Osa',1),(49,6,'Quepos',1),(50,6,'Golfito',1),(51,6,'Coto Brus',1),(52,6,'Parrita',1),(53,6,'Corredores',1),(54,6,'Garabito',1),(55,7,'Limon',1),(56,7,'Pococí',1),(57,7,'Siquirres',1),(58,7,'Talamanca',1),(59,7,'Guácimo',1),(60,7,'Matina',1);
 /*!40000 ALTER TABLE `canton` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +121,7 @@ CREATE TABLE `categorias` (
   `activo` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_categorias`),
   UNIQUE KEY `CATEGORIAS_NOMBRE_UNIQUE_IDX` (`nombre`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,8 +130,36 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` VALUES (1,'Prueba desde el FrontEnd',1),(7,'Segunda Prueba desde el F',1),(8,'Tercera Prueba FrontEnd',1);
+INSERT INTO `categorias` VALUES (1,'Prueba desde el FrontEnd',1),(7,'Segunda Prueba desde el F',1),(8,'Tercera Prueba FrontEnd',1),(9,'HOLA',1);
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mensajes`
+--
+
+DROP TABLE IF EXISTS `mensajes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mensajes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `asunto` varchar(150) NOT NULL,
+  `mensaje` text NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mensajes`
+--
+
+LOCK TABLES `mensajes` WRITE;
+/*!40000 ALTER TABLE `mensajes` DISABLE KEYS */;
+INSERT INTO `mensajes` VALUES (1,'Admin','rbonillamejias@gmail.com','cambieme mi correo','Cambie mi correo por efecjjd','2025-04-22 01:42:49'),(2,'Admin','rbonillamejias@gmail.com','cambieme mi correo','Cambie mi correo por efecjjd','2025-04-22 01:43:45'),(3,'Admin','rbonillamejias@gmail.com','1334','1234','2025-04-22 02:33:12'),(4,'Admin','rbonillamejias@gmail.com','134567','hola','2025-04-22 02:34:50'),(5,'rachel','rbonillamejias@gmail.com','1234','1234','2025-04-22 02:39:54'),(6,'Admin','rbonillamejias@gmail.com','1234','1234','2025-04-22 02:42:10'),(7,'Admin','rbonillamejias@gmail.com','ef','ef','2025-04-22 02:43:22'),(8,'rachel','rbonillamejias@gmail.com','1234','124','2025-04-22 02:52:22'),(9,'Admin','rbonillamejias@gmail.com','1234','1234','2025-04-22 02:54:08'),(10,'Rachel ','rbonillamejias@gmail.com','123457','12345678','2025-04-22 02:55:34'),(11,'Admin','rbonillamejias@gmail.com','1234','1234','2025-04-22 03:04:02'),(12,'test','rbonillamejias@gmail.com','test','TESSSSSSST','2025-04-22 03:05:00'),(13,'Admin','rbonillamejias@gmail.com','1dfguufcxa','sgfhjknbv','2025-04-22 03:30:20'),(14,'Admin','rbonillamejias@gmail.com','1werty','azdfhy','2025-04-22 04:35:01');
+/*!40000 ALTER TABLE `mensajes` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -173,6 +201,7 @@ CREATE TABLE `provincias` (
   `id_provincias` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   `activo` tinyint(1) NOT NULL,
+  `imagen` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_provincias`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -183,7 +212,7 @@ CREATE TABLE `provincias` (
 
 LOCK TABLES `provincias` WRITE;
 /*!40000 ALTER TABLE `provincias` DISABLE KEYS */;
-INSERT INTO `provincias` VALUES (1,'San Jose',1),(2,'Alajuela',1),(3,'Cargago',1),(4,'Heredia',1),(5,'Guanacaste',1),(6,'Puntarenas',1),(7,'Limon',1);
+INSERT INTO `provincias` VALUES (2,'Alajuela',1,'../Img/volcan.jpeg'),(3,'Cargago',1,'../Img/colibri.jpeg'),(4,'Heredia',1,'../Img/barco.jpeg'),(5,'Guanacaste',1,'../Img/grecia.jpeg'),(6,'Puntarenas',1,'../Img/playas.jpeg'),(7,'Limon',1,'../Img/arena.jpeg');
 /*!40000 ALTER TABLE `provincias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +228,7 @@ CREATE TABLE `rol` (
   `nombre` varchar(10) NOT NULL,
   `activo` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_rol`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,6 +237,7 @@ CREATE TABLE `rol` (
 
 LOCK TABLES `rol` WRITE;
 /*!40000 ALTER TABLE `rol` DISABLE KEYS */;
+INSERT INTO `rol` VALUES (1,'admin',1),(2,'usuario',1),(3,'usuario',1),(4,'admin',1),(5,'usuario',1),(6,'admin',1),(7,'usuario',1);
 /*!40000 ALTER TABLE `rol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,6 +258,7 @@ CREATE TABLE `usuario` (
   `telefono` varchar(15) DEFAULT NULL,
   `ruta_imagen` varchar(1022) DEFAULT NULL,
   `activo` tinyint(1) NOT NULL,
+  `rol` enum('admin','usuario') NOT NULL DEFAULT 'usuario',
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -239,7 +270,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'paraisotico23','123','admin','admin','paraisotico23@gmail.com',NULL,NULL,1),(2,'ignacii31','123','Ignacio Enrique','Vargas Mendoza','ignacii31@gmail.com',NULL,NULL,1);
+INSERT INTO `usuario` VALUES (1,'admin@paraisotico.com','1234','Rachel','Mejias','admin@paraisotico.com',NULL,NULL,1,'admin'),(2,'user@paraisotico.com','1234','Ignacio ','Vargas ','user@paraisotico.com',NULL,NULL,1,'usuario');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,127 +299,6 @@ LOCK TABLES `usuarios_roles` WRITE;
 /*!40000 ALTER TABLE `usuarios_roles` DISABLE KEYS */;
 /*!40000 ALTER TABLE `usuarios_roles` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping routines for database 'db_paraisotico'
---
-/*!50003 DROP PROCEDURE IF EXISTS `SP_ConsultarCantones` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ConsultarCantones`()
-BEGIN
-    SELECT 
-        id_canton,
-        nombre,
-        id_provincias
-    FROM Canton
-    WHERE activo = 1; 
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_ConsultarCategorias` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ConsultarCategorias`(pActivo tinyint)
-BEGIN
-    SELECT id_categorias , nombre
-    FROM Categorias c
-    WHERE c.activo = pActivo;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_ConsultarProvincias` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ConsultarProvincias`()
-BEGIN
-    SELECT 
-        id_provincias,
-        nombre
-    FROM Provincias
-    WHERE activo = 1; 
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_InsertarActividad` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_InsertarActividad`(
-	pNombre varchar(50),
-	pDescripcion varchar(255),
-	pPrecio decimal(10,2),
-	pPuntoEncuentro varchar(100),
-    pDescripcionIncluye varchar(500),
-    pID_categorias int(11),
-    pRutaImagen varchar(2000),
-    pID_provincia int(11)
-)
-BEGIN
-	INSERT INTO db_paraisotico.actividades(nombre, descripcion, precio, punto_encuentro, descripcion_incluye, id_categorias, rutaImagen, activo, id_provincia)
-	VALUES(pNombre, pDescripcion, pPrecio, pPuntoEncuentro, pDescripcionIncluye, pID_categorias, pRutaImagen, 1, pID_provincia);
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `SP_InsertarCategoria` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_InsertarCategoria`( p_nombre VARCHAR(25))
-BEGIN
-    INSERT INTO categorias(nombre, activo)
-    VALUES(p_nombre, 1);
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -399,4 +309,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-18 19:20:13
+-- Dump completed on 2025-04-21 23:30:24
