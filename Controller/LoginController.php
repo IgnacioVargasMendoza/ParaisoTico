@@ -76,6 +76,7 @@ if (isset($_POST["btnIniciarSesion"])) {
             $_SESSION["IdUsuario"] = $datos["id_usuario"];
             $_SESSION["CorreoUsuario"] = $datos["correo"];
             $_SESSION["NombreUsuario"] = $datos["nombre"] . " " . $datos["primer_apellido"]; 
+            $_SESSION["RolUsuario"] = $datos["rol"]; 
 
             header('Location: ../View/Login/home.php');
             exit();
@@ -94,7 +95,7 @@ if (isset($_POST["btnIniciarSesion"])) {
 function IniciarSesionModel($correo) {
     $conexion = AbrirBaseDatos();  
 
-    $consulta = $conexion->prepare("SELECT id_usuario, password, nombre, primer_apellido, correo FROM usuario WHERE correo = ?");
+    $consulta = $conexion->prepare("SELECT id_usuario, password, nombre, primer_apellido, correo, rol FROM usuario WHERE correo = ?");
     $consulta->bind_param("s", $correo);
     $consulta->execute();
     $resultado = $consulta->get_result();
