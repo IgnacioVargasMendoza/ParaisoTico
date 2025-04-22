@@ -72,6 +72,8 @@
             </div>
         </div>
     </section>
+    
+    <?php printScript(); ?>
 
 </body>
 </html>

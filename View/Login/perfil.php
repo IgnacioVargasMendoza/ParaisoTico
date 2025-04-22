@@ -122,6 +122,8 @@
         }
         ?>
     </section>
+    
+    <?php printScript(); ?>
 
 </body>
 </html>

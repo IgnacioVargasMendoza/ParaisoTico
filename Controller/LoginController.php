@@ -39,6 +39,12 @@ if (isset($_POST["btnCrearCuenta"])) {
     }
 }
 
+if(isset($_POST["btnSalir"]))
+{
+    session_destroy();
+    header('location: ../../View/Login/login.php');
+}
+
 // Función para verificar si el correo ya existe en la base de datos
 function VerificarCorreoExistente($correo) {
     $conexion = AbrirBaseDatos();

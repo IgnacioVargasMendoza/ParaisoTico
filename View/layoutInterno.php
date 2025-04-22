@@ -1,4 +1,5 @@
 <?php
+include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Controller/LoginController.php";
 
     if(session_status() == PHP_SESSION_NONE){
         session_start();
@@ -49,6 +50,8 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../Login/home.php">Destinos</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../Blog/blog.php">Blog</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../Login/contact.php">Contacto</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../Login/.php">Reservas</a></li>
+
                     </ul>
                 </div>
     
@@ -65,16 +68,17 @@
                             <a class="dropdown-item" href="perfil.php">Cuenta</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">Cambiar Contraseña</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="../Categorias/listado.php">Administrar Actividades</a>
+                            <a class="dropdown-item" href="../Categorias/listado.php"> Actividades</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" href="../Login/login.php">Cerrar Sesión</a>
+                                 <a class="dropdown-item" href="#">
+                                    <form action="" method="POST">
+                                        <input class="AlineacionOpcionesSalir" id="btnSalir" name="btnSalir" type="submit" value="Salir">
+                                    </form>
+                                </a>      
                         </li>
                     </ul>
                 </div>
