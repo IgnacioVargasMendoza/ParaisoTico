@@ -102,3 +102,12 @@ CREATE TABLE Reservas (
     CONSTRAINT fk_reserva_oferta
         FOREIGN KEY (id_oferta) REFERENCES Ofertas(id_oferta)
 ) ENGINE = InnoDB;
+
+CREATE TABLE mensajes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) NOT NULL,
+    asunto VARCHAR(150) NOT NULL,
+    mensaje TEXT NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
