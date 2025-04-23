@@ -19,7 +19,7 @@
 
     <header class="masthead text-white text-center" style="background-image: url('../Img/playas.jpeg'); background-size: cover; background-position: center ; background-repeat: no-repeat;">
         <div class="container d-flex align-items-center flex-column">
-            <h1 class="masthead-heading text-uppercase mb-0">Mensajes de Contacto</h1>
+            <h1 class="masthead-heading text-uppercase mb-0">Contacto</h1>
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon"><i class="fas fa-envelope"></i></div>
