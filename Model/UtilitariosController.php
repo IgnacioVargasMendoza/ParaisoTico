@@ -1,44 +1,53 @@
 <?php
 
-    function EnviarCorreo($asunto,$contenido,$destinatario)
-    {
-        require 'PHPMailer/src/PHPMailer.php';
-        require 'PHPMailer/src/SMTP.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-        $correoSalida = "paraisotico23@gmail.com";
-        $contrasennaSalida = "9$5#K8z&c1]%";
+function EnviarCorreo(string $asunto, string $contenido, string $destinatario): bool {
 
-        $mail = new PHPMailer();
-        $mail -> CharSet = 'UTF-8';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/ParaisoTico/Controller/PHPMailer/src/Exception.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/ParaisoTico/Controller/PHPMailer/src/PHPMailer.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/ParaisoTico/Controller/PHPMailer/src/SMTP.php';
 
-        $mail -> IsSMTP();
-        $mail -> IsHTML(true); 
-        $mail -> Host = 'smtp.office365.com';
-        $mail -> SMTPSecure = 'tls';
-        $mail -> Port = 587;                      
-        $mail -> SMTPAuth = true;
-        $mail -> Username = $correoSalida;               
-        $mail -> Password = $contrasennaSalida;                                
-        
-        $mail -> SetFrom($correoSalida);
-        $mail -> Subject = $asunto;
-        $mail -> MsgHTML($contenido);   
-        $mail -> AddAddress($destinatario);
 
-        try 
-        {
-            if ($mail->send()) 
-            {
-                return true; // Envío exitoso
-            } 
-            else 
-            {
-                return true; // Falló el envío
-            }
-        } catch (Exception $e) 
-        {
-            return false;
-        }
+    $correoSalida      = 'ivargas30298@ufide.ac.cr';
+    $contrasennaSalida = 'xxxx'; 
+
+    $mail = new PHPMailer(true);
+    try {
+
+        $mail->SMTPDebug   = 2;
+        $mail->Debugoutput = 'html';
+
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.office365.com';
+        $mail->Port       = 587;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->SMTPAuth   = true;
+        $mail->Username   = $correoSalida;
+        $mail->Password   = $contrasennaSalida;
+
+
+        $mail->SMTPOptions = [
+            'ssl' => [
+                'verify_peer'      => false,
+                'verify_peer_name' => false,
+                'allow_self_signed'=> true,
+            ],
+        ];
+
+        $mail->setFrom($correoSalida, 'Paraíso Tico');
+        $mail->addReplyTo($correoSalida, 'Paraíso Tico');
+        $mail->addAddress($destinatario);
+
+        $mail->isHTML(true);
+        $mail->CharSet = 'UTF-8';
+        $mail->Subject = $asunto;
+        $mail->Body    = $contenido;
+
+        return $mail->send();
+    } catch (Exception $e) {
+        error_log('Mailer Error: ' . $mail->ErrorInfo);
+        return false;
     }
-
-?>
+}

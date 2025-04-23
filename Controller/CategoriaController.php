@@ -5,6 +5,14 @@ if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
 
+if (isset($_POST['btnContinuar'])) {
+    
+    $_SESSION['idCategoria'] = $_POST['opcionesCategoria'];
+    header('Location: ../../View/Actividades/agregar.php');
+    exit;
+}
+
+
 if(isset($_POST["btnGuardar"])){
 
     $nombre = $_POST["txtCategoria"];

@@ -50,8 +50,12 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Controller/LoginControlle
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../Login/home.php">Destinos</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../Blog/blog.php">Blog</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../Login/contact.php">Contacto</a></li>
+<<<<<<< Updated upstream
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../Login/.php">Reservas</a></li>
 
+=======
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../Reservas/listado.php">Reservas</a></li>
+>>>>>>> Stashed changes
                     </ul>
                 </div>
     
@@ -68,7 +72,11 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Controller/LoginControlle
                             <a class="dropdown-item" href="perfil.php">Cuenta</a>
                         </li>
                         <li>
+<<<<<<< Updated upstream
                             <a class="dropdown-item" href="../Categorias/listado.php"> Actividades</a>
+=======
+                            <a class="dropdown-item" href="../Categorias/listado.php">Administrar Actividades</a>
+>>>>>>> Stashed changes
                         </li>
                         <li>
                             <hr class="dropdown-divider">

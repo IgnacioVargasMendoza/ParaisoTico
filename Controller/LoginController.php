@@ -1,6 +1,7 @@
 <?php 
 include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Model/DBConexionModel.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Model/UtilitariosController.php"; 
+include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Model/UsuarioModel.php"; 
 session_start();  
 
 // Registro de nuevo usuario
@@ -110,39 +111,43 @@ function IniciarSesionModel($correo) {
     return $resultado;
 }
 
-// RECUPERAR CONTRASEÑA
-if (isset($_POST["btnRecuperarCuenta"])) {
+if(isset($_POST["btnRecuperarCuenta"])) {
     $correo = $_POST["txtCorreo"];
+    $resultado = ValidarUsuarioCorreoModel($correo);
 
-    // Verificar si el correo está registrado
-    $resultado = VerificarCorreoExistente($correo);
-    if ($resultado->num_rows > 0) {
-        // Generar un token único
-        $token = bin2hex(random_bytes(50));
-        
-        // Guardar el token en la base de datos
-        $conexion = AbrirBaseDatos();
-        $consulta = $conexion->prepare("UPDATE usuario SET token = ? WHERE correo = ?");
-        $consulta->bind_param("ss", $token, $correo);
-        $consulta->execute();
-        CerrarBaseDatos($conexion);
-        
-        // Enviar el correo con el enlace para restablecer la contraseña
-        $asunto = "Restablecer tu contraseña";
-        $contenido = "<p>Haz clic en el siguiente enlace para restablecer tu contraseña:</p>";
-        $contenido .= "<a href='http://localhost/ParaisoTico/View/Login/restablecerContra.php?token=" . $token . "'>Restablecer Contraseña</a>";
-        
-        // Llamamos a la función para enviar el correo
-        if (EnviarCorreo($asunto, $contenido, $correo)) {
-            $_SESSION["Message"] = "Te hemos enviado un enlace para restablecer tu contraseña.";
+    if($resultado != null && $resultado->num_rows > 0) {
+        $datos = mysqli_fetch_assoc($resultado);
+        $codigo = GenerarCodigo();
+
+        if(RecuperarContrasennaModel($datos["Id"], $codigo)) {
+            $contenido = "<html><body>
+            Estimado(a) " . $datos["NombreUsuario"] . "<br/><br/>
+            Se ha generado el siguiente código de seguridad: <b>" . $codigo . "</b><br/>
+            Recuerde realizar el cambio de contraseña una vez que ingrese al sistema.</body></html>";
+
+            if(EnviarCorreo("Recuperar Contraseña", $contenido, $datos["Correo"])) {
+                $_SESSION["Message"] = "Se ha enviado un código de recuperación a su correo.";
+            } else {
+                $_SESSION["Message"] = "Error al enviar el correo. Por favor intente más tarde.";
+            }
         } else {
-            $_SESSION["Message"] = "Hubo un error al enviar el correo. Inténtalo nuevamente.";
+            $_SESSION["Message"] = "Error al generar código de recuperación.";
         }
     } else {
-        $_SESSION["Message"] = "El correo no está registrado en nuestros sistemas.";
+        $_SESSION["Message"] = "El correo no está registrado en nuestro sistema.";
     }
-
-    header('Location: ../View/Login/cambiarcontra.php');  // Redirige al formulario de recuperación
+    header('Location: ../View/Login/login.php');
     exit();
 }
-?>
+
+function GenerarCodigo() {
+    $alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $pass = array();
+    $alphaLength = strlen($alphabet) - 1;
+    for ($i = 0; $i < 6; $i++) {
+        $n = rand(0, $alphaLength);
+        $pass[] = $alphabet[$n];
+    }
+    return implode($pass);
+}
+
