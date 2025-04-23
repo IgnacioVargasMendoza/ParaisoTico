@@ -1,56 +1,41 @@
 <?php 
-include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Controller/BlogDetailController.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/View/layoutInterno.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Controller/BlogDetailController.php";
+
 ?>
 <!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title><?php echo $blog['titulo']; ?> - Paraíso Tico</title>
-       
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <link href="../Styles/styles.css" rel="stylesheet" />
+<html lang="en">
+    <?php printCSS(); ?>
+    <link href="../Styles/blogDetail.css" rel="stylesheet" />
 
-        <!-- Font Awesome icons -->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <link href="../Styles/blogDetail.css" rel="stylesheet" />
-    </head>
-    
     <body>
 
         <?php barraNavegacion() ?>
-
+    
         <section class="page-section" id="tourDetail" style="margin-top:100px;">
             <div class="container">
-                <!-- Título del blog -->
-                <h2 class="text-center text-uppercase text-secondary mb-0"><?php echo $blog['titulo']; ?></h2>
+                <h2 class="text-center text-uppercase text-secondary mb-0"><?php echo $tour['title']; ?></h2>
                 <div class="divider-custom my-4">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <!-- Imagen principal -->
                 <div class="text-center mb-4">
-                    <img src="<?php echo $blog['imagen_data']; ?>" class="img-fluid main-tour-img" alt="Imagen principal del blog">
+                    <img src="<?php echo $mainImagePath; ?>" class="img-fluid main-tour-img" alt="Main Tour Image">
                 </div>
-                <!-- Detalles extendidos del blog -->
+                <!-- Extended Tour Details -->
                 <div class="mt-4">
-                    <div><?php echo $blog['contenido']; ?></div>
+                    <div><?php echo $tour['content']; ?></div>
                     <h4>Contacto</h4>
-                    <div><?php echo $blog['contacto']; ?></div>
+                    <div><?php echo $tour['contact']; ?></div>
                     <h4>Actividades a realizar</h4>
-                    <div><?php echo $blog['actividades']; ?></div>
+                    <div><?php echo $tour['activities']; ?></div>
                     <h4>En detalle</h4>
-                    <div><?php echo $blog['detallado']; ?></div>
+                    <div><?php echo $tour['detailed']; ?></div>
                     <h4>Qué incluye</h4>
-                    <div><?php echo $blog['incluye']; ?></div>
+                    <div><?php echo $tour['includes']; ?></div>
                 </div>
-                <!-- Carrusel de la galería -->
+                <!-- Gallery Carousel with multiple image cards -->
                 <div class="mt-4">
                     <h5 class="text-center">Galería</h5>
                     <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -61,7 +46,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/View/layoutInterno.php";
                                         <?php foreach ($chunk as $galleryImage): ?>
                                             <div class="col-md-4">
                                                 <div class="card gallery-card">
-                                                    <img src="<?php echo $galleryImage; ?>" class="card-img-top gallery-img" alt="Imagen de la galería"
+                                                    <img src="<?php echo $galleryImage; ?>" class="card-img-top gallery-img" alt="Gallery Image"
                                                          data-bs-toggle="modal" data-bs-target="#imageModal" data-bs-image="<?php echo $galleryImage; ?>">
                                                 </div>
                                             </div>
@@ -80,24 +65,23 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/View/layoutInterno.php";
                         </button>
                     </div>
                 </div>
-                <!-- Volver al blog -->
+    
                 <div class="mt-4 text-center">
                     <a href="blog.php" class="btn btn-secondary">Volver al blog</a>
                 </div>
             </div>
         </section>
     
-        <!-- Modal para la imagen de la galería -->
         <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content" style="background: transparent; border: none;">
                     <div class="modal-body p-0">
-                        <img src="" class="img-fluid" id="modalImage" alt="Imagen completa del blog">
+                        <img src="" class="img-fluid" id="modalImage" alt="Full Tour Image">
                     </div>
                 </div>
             </div>
         </div>
-    
+        <?php printScript(); ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="../Scripts/modal.js"></script>
     </body>
