@@ -51,8 +51,12 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Controller/LoginControlle
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../Blog/blog.php">Blog</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../Login/contact.php">Contacto</a></li>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../Login/.php">Reservas</a></li>
 
+=======
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../Reservas/listado.php">Reservas</a></li>
+>>>>>>> Stashed changes
 =======
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../Reservas/listado.php">Reservas</a></li>
 >>>>>>> Stashed changes
@@ -73,8 +77,11 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/ParaisoTico/Controller/LoginControlle
                         </li>
                         <li>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                             <a class="dropdown-item" href="../Categorias/listado.php"> Actividades</a>
 =======
+=======
+>>>>>>> Stashed changes
                             <a class="dropdown-item" href="../Categorias/listado.php">Administrar Actividades</a>
 >>>>>>> Stashed changes
                         </li>
